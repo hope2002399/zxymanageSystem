@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+	
+	<select id="getUser"  resultType="cn.zxy.com.bean.User"> 
+		 select  *  from  t_user    where  loginname=#{username} and loginpass=#{pwd} and STATUS =1 
+	</select>
+	<select id="getDataById" resultType="java.util.Map"> 
+		SELECT  t.*,u.zh_name  as adminName FROM  person  t  LEFT JOIN  t_user  u ON u.id = t.parent_id 
+ 		<if test="userId!=0 and  userId!=null ">
+			where t.parent_id =  #{userId}
+		</if>
+		order by t.parent_id
+	</select>
+	
+	<insert id="insertPsn">
+		INSERT INTO person(zh_name,birthday,tel,POSITION,phone,parent_id) VALUES
+			(#{zhName},#{birthday},#{tel},#{position},#{phone},#{parent_id}) 
+	</insert>
+	
+	<update id="updatePsn">
+	 UPDATE person  SET  zh_name = #{zhName} ,
+	    birthday = #{birthday}, tel =#{tel}  , position=#{position} , phone=#{phone} 
+	    WHERE  psn_code = #{psnCode}
+	</update>
+	 
+	<delete id="deletePsn">
+		DELETE FROM person  WHERE psn_code  = #{psnCode} 
+	</delete>
+
+	 <select id="getDateForUpdate" resultType="cn.zxy.com.bean.Person"> 
+	 		 SELECT * FROM person  t WHERE  t.psn_code = #{psnCode} 
+	 </select>
+	
+	
+	
+</mapper>	

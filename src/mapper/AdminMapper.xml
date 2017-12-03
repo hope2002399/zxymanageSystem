@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin">
+	 
+	 
+	 <select id="getAdminManage" resultType="cn.zxy.com.bean.User">
+	 	 select  *  from  t_user  
+	 </select>
+	 <insert id="addAdmin">
+	 	INSERT INTO t_user(loginname,loginpass,email,zh_name,STATUS) VALUES(
+	 		#{loginName},'111111',#{email},#{zhName},1  
+	 	)
+	 </insert>
+	 <update id="updateAdminData">
+	 	 UPDATE t_user t SET t.status = #{status}  WHERE t.id  = #{userId}
+	 </update>
+	 <delete id="deleteData">
+	 	DELETE FROM t_user   WHERE  id = #{userId} 
+	 </delete>
+	
+	
+	
+</mapper>	
