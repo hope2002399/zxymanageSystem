@@ -12,13 +12,13 @@
 <body>
 <table>
 	<tr>
-		<td colspan="1">
+		<td colspan="1" >
 			<marquee scrollamount="1" scrolldelay="60"  direction="up" onmouseover="this.stop();" onmouseout="this.start();" >
 					   <p>
 					   	 <strong><span id="test">欢迎光临</span></strong>
 					   </p> 
 			</marquee>
-			 
+			  
 		</td>
 	</tr>
 	<tr>
